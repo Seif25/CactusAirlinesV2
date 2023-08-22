@@ -1,11 +1,8 @@
 "use client";
 
 import { NextPage } from "next";
-import { MdFlightClass } from "react-icons/md";
-import { BsFillPersonFill } from "react-icons/bs";
 import {
   BiSolidDownArrow,
-  BiSolidPlaneAlt,
   BiSolidUpArrow,
 } from "react-icons/bi";
 import { useState } from "react";
@@ -35,12 +32,12 @@ const Select: NextPage<Props> = (props) => {
   };
 
   return (
-    <div className="h-10 w-[150px] text-[#534439]">
+    <div className="h-10 w-[200px] text-[#534439]">
       <button
         onClick={handleOpen}
-        // onBlur={handleClose}
+        onBlur={handleClose}
         tabIndex={0}
-        className="dropdown-btn absolute flex items-center justify-center gap-2 rounded-md p-2 font-light hover:bg-[#005B48] hover:bg-opacity-10 h-10 w-[150px]"
+        className="dropdown-btn absolute flex items-center justify-between gap-2 rounded-md p-2 font-light hover:bg-[#005B48] hover:bg-opacity-10 h-10 w-[200px]"
       >
         {icon} {value}{" "}
         {!open ? (
@@ -50,16 +47,16 @@ const Select: NextPage<Props> = (props) => {
         )}
       </button>
       <menu
-        className={`relative rounded-md p-5 bg-white w-60 top-12 ${
+        className={`relative rounded-md p-5 bg-[#534439] shadow-sm shadow-[#BAA89B] w-60 top-12 ${
           !open && "hidden"
-        } dropdown`}
+        } dropdown z-20 mb-10`}
       >
-        <ul className="flex flex-col gap-2 w-auto">
+        <ul className="flex flex-col gap-2 w-auto h-auto text-white">
           {options.map((option, index) => (
             <li
-              className="hover:bg-[#005B48] hover:bg-opacity-10 rounded-md p-2 cursor-pointer"
+              className="hover:bg-[#BAA89B] hover:bg-opacity-10 rounded-md p-2 cursor-pointer"
               key={`o-${index}`}
-              onClick={handleChange}
+              onMouseDown={handleChange}
             >
               {option}
             </li>
