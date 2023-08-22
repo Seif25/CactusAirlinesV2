@@ -10,11 +10,30 @@ import { FiSearch } from "react-icons/fi";
 import Select from "./components/select";
 import { useState } from "react";
 import moment from "moment";
+import DatePicker from "./components/date-picker";
+import Countries from "./static/countries";
+import Autocomplete from "./components/input/autocomplete";
+import PersonSelect from "./components/input/person-select";
+
 
 export default function Home() {
   const [trip, setTrip] = useState("Round-trip");
-  const [person, setPerson] = useState("1 Person");
+  const [adult, setAdult] = useState(0);
+  const [child, setChild] = useState(0);
   const [flightClass, setFlightClass] = useState("Economy");
+
+  const [startDate, setStartDate] = useState<Date | null>(new Date());
+  const [endDate, setEndDate] = useState<Date | null>(null);
+
+  const [from, setFrom] = useState("Egypt");
+  const [to, setTo] = useState("");
+
+  const onChange = (dates: (Date | null)[]) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+  };
+
   return (
     <div className="flex flex-col gap-20 py-10 lg:p-16">
       {/* Hero */}
@@ -45,28 +64,39 @@ export default function Home() {
         </div>
       </div>
       {/* Flight Search */}
-      <div className="p-5 lg:p-0">
-        <div id="browse" className="bg-[#FFEACE] shadow-sm shadow-[#534439] w-full h-auto rounded-md p-5">
+      <div className="p-5 lg:p-0 lg:pb-20">
+        <div
+          id="browse"
+          className="bg-[#FFEACE] shadow-sm shadow-[#534439] w-full h-auto rounded-md p-5"
+        >
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 pb-5">
-            <div className="flex flex-col lg:flex-row lg:items-center gap-5 w-auto">
-              <Select
-                options={["Round-trip", "One-way"]}
-                icon={<BiSolidPlaneAlt className="text-md" />}
-                value={trip}
-                setValue={setTrip}
-              />
-              <Select
-                options={["1 Person", "2 Persons", "3 Persons", "4 Persons"]}
-                icon={<BsFillPersonFill className="text-md" />}
-                value={person}
-                setValue={setPerson}
-              />
-              <Select
-                options={["Economy", "Business", "First"]}
-                icon={<MdFlightClass className="text-md" />}
-                value={flightClass}
-                setValue={setFlightClass}
-              />
+            {/* Select Group */}
+            <div className="flex flex-col lg:flex-row lg:items-center w-auto">
+              <div className="lg:border-r lg:border-[#534439] lg:border-opacity-20 pr-5">
+                <Select
+                  options={["Round-trip", "One-way"]}
+                  icon={<BiSolidPlaneAlt className="text-md" />}
+                  value={trip}
+                  setValue={setTrip}
+                />
+              </div>
+              <div className="lg:border-r lg:border-[#534439] lg:border-opacity-20 pr-5 pl-5">
+                <PersonSelect
+                  icon={<BsFillPersonFill className="text-md" />}
+                  value1={adult}
+                  value2={child}
+                  setValue1={setAdult}
+                  setValue2={setChild}
+                />
+              </div>
+              <div className="pl-5">
+                <Select
+                  options={["Economy", "Business", "First"]}
+                  icon={<MdFlightClass className="text-md" />}
+                  value={flightClass}
+                  setValue={setFlightClass}
+                />
+              </div>
             </div>
             <div>
               <h3 className="font-bold text-sm text-[#534439]">
@@ -77,35 +107,28 @@ export default function Home() {
               </h3>
             </div>
           </div>
-          <div className="bg-[#534439] bg-opacity-10 rounded-md w-auto h-full lg:h-[70px] flex flex-col lg:flex-row lg:items-center justify-evenly gap-5 p-5 lg:px-2">
-            <div className="flex flex-col lg:flex-row items-center justify-evenly gap-5">
-              <input
-                type="text"
-                className="p-2 rounded-md bg-transparent border border-[#534439] bg-opacity-30 text-black focus:ring-2 focus:ring-[#534439] focus:outline-none placeholder:text-black placeholder:pl-2"
+          <div className="bg-[#534439] bg-opacity-10 rounded-md w-full h-full lg:h-[70px] flex flex-col lg:flex-row lg:items-center justify-evenly gap-5 p-5 lg:px-2">
+            <div className="flex flex-col lg:flex-row items-center justify-evenly gap-5 w-auto">
+              <Autocomplete
+                options={Countries.map((option) => option.label)}
+                id="from-autocomplete"
                 placeholder="Egypt"
+                defaultValue="Egypt"
+                setValue={setFrom}
               />
               <FaPlane className="text-[#005B48] hover:animate-spin" />
-              <input
-                type="text"
-                className="p-2 rounded-md bg-transparent border border-[#534439] bg-opacity-30 text-black focus:ring-2 focus:ring-[#534439] focus:outline-none placeholder:text-black placeholder:pl-2"
+              <Autocomplete
+                options={Countries.map((option) => option.label)}
+                id="from-autocomplete"
                 placeholder="Anywhere"
+                setValue={setTo}
               />
             </div>
-            <div className="border-t-2 lg:border-t-0 lg:border-l-2 border-[#534439] pl-2 flex items-center justify-center gap-10">
-              <input
-                type="date"
-                name="from"
-                id="from-date"
-                className="w-auto lg:w-[150px] bg-transparent rounded-md p-2"
-                defaultValue={moment().format("D, MM dd")}
-              />
-              -
-              <input
-                type="date"
-                name="to"
-                id="to-date"
-                className="w-auto lg:w-[150px] bg-transparent rounded-md p-2"
-                defaultValue={moment().format("D, MM dd")}
+            <div className="border-t-2 lg:border-t-0 lg:border-l-2 w-auto border-[#534439] border-opacity-20 lg:pl-10 pt-5 lg:pt-0 flex items-center justify-center">
+              <DatePicker
+                startDate={startDate}
+                endDate={endDate}
+                onChange={onChange}
               />
             </div>
             <div>
