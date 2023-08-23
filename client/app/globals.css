@@ -4,7 +4,10 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 255, 234, 206;
+  /* --background-start-rgb: 253, 233, 255; */
+  /* #8D5EC2 */
+  /* --background-start-rgb: 220, 242, 255; */
+  --background-start-rgb: 221, 232, 224;
   --background-end-rgb: 255, 255, 255;
 }
 
@@ -30,4 +33,31 @@ body {
 }
 .calendar{
   background: red;
+}
+
+@media screen and (min-width: 800px) {
+  .to-front{
+    animation: toFront 2s;
+    -webkit-animation: toFront 2s;
+    -moz-animation: toFront 2s;
+    -o-animation: toFront 2s;
+    -ms-animation: toFront 2s;
+    opacity: 50%;
+    z-index: -20;
+  }
+  .to-front:hover{
+    z-index: 20;
+    opacity: 100%;
+  }
+  @keyframes toFront {
+    0% {
+      left: 35%;
+      bottom: 20%;
+    }
+    100% {
+      left: 50%;
+      bottom: 0%;
+      z-index: 20;
+    }
+  }
 }

@@ -9,6 +9,7 @@ interface AutocompleteType {
     setValue?: Dispatch<SetStateAction<string>>;
     options: string[];
     disabled?: boolean;
+    width?: string;
   }
   
   export default AutocompleteType;
