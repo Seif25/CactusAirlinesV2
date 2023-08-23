@@ -63,7 +63,7 @@ const PersonSelect: NextPage<Props> = (props) => {
         )}
       </button>
       <menu
-        className={`relative rounded-md p-5 bg-[#534439] shadow-sm shadow-[#BAA89B] w-60 top-12 ${
+        className={`relative rounded-md p-5 bg-[#085242] shadow-sm shadow-[#085242] w-60 top-12 ${
           !open && "hidden"
         } dropdown z-20 mb-10`}
       >
@@ -72,7 +72,7 @@ const PersonSelect: NextPage<Props> = (props) => {
             <h3 className="text-white">Adult</h3>
             <div className="flex items-center justify-evenly gap-5">
               <button
-                className={`flex items-center justify-center rounded-md bg-[#BAA89B] bg-opacity-75 text-[#534439] text-lg h-10 p-2 hover:bg-opacity-100 disabled:bg-opacity-75 w-10`}
+                className={`flex items-center justify-center rounded-md bg-[#98B0A8] bg-opacity-75 text-[#085242] text-lg h-10 p-2 hover:bg-opacity-100 disabled:bg-opacity-75 w-10`}
                 onClick={handleSubValue1}
                 disabled={value1 === 0}
               >
@@ -80,7 +80,7 @@ const PersonSelect: NextPage<Props> = (props) => {
               </button>
               <h3 className="text-white text-sm font-bold">{value1}</h3>
               <button
-                className="flex items-center justify-center rounded-md bg-[#BAA89B] bg-opacity-75 text-[#534439] text-lg h-10 p-2 hover:bg-opacity-100 w-10"
+                className="flex items-center justify-center rounded-md bg-[#98B0A8] bg-opacity-75 text-[#085242] text-lg h-10 p-2 hover:bg-opacity-100 w-10"
                 onClick={handleAddValue1}
               >
                 +
@@ -91,7 +91,7 @@ const PersonSelect: NextPage<Props> = (props) => {
             <h3 className="text-white">Child</h3>
             <div className="flex items-center justify-evenly gap-5">
               <button
-                className={`flex items-center justify-center rounded-md bg-[#BAA89B] bg-opacity-75 text-[#534439] text-lg h-10 p-2 hover:bg-opacity-100 disabled:bg-opacity-75 w-10`}
+                className={`flex items-center justify-center rounded-md bg-[#98B0A8] bg-opacity-75 text-[#085242] text-lg h-10 p-2 hover:bg-opacity-100 disabled:bg-opacity-75 w-10`}
                 onClick={handleSubValue2}
                 disabled={value2 === 0}
               >
@@ -99,7 +99,7 @@ const PersonSelect: NextPage<Props> = (props) => {
               </button>
               <h3 className="text-white text-sm font-bold">{value2}</h3>
               <button
-                className="flex items-center justify-center rounded-md bg-[#BAA89B] bg-opacity-75 text-[#534439] text-lg h-10 p-2 hover:bg-opacity-100 w-10"
+                className="flex items-center justify-center rounded-md bg-[#98B0A8] bg-opacity-75 text-[#085242] text-lg h-10 p-2 hover:bg-opacity-100 w-10"
                 onClick={handleAddValue2}
               >
                 +
@@ -107,7 +107,7 @@ const PersonSelect: NextPage<Props> = (props) => {
             </div>
           </div>
           <div className="flex items-center justify-center w-full">
-            <button className="rounded-md bg-[#BAA89B] bg-opacity-75 text-[#534439] p-2 hover:bg-opacity-100 font-bold" onClick={handleConfirm}>
+            <button className="rounded-md bg-[#98B0A8] bg-opacity-75 text-[#085242] p-2 hover:bg-opacity-100" onClick={handleConfirm}>
               Confirm Choices
             </button>
           </div>

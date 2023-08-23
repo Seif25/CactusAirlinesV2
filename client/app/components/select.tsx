@@ -47,7 +47,7 @@ const Select: NextPage<Props> = (props) => {
         )}
       </button>
       <menu
-        className={`relative rounded-md p-5 bg-[#534439] shadow-sm shadow-[#BAA89B] w-60 top-12 ${
+        className={`relative rounded-md p-5 bg-[#085242] shadow-sm shadow-[#BAA89B] w-60 top-12 ${
           !open && "hidden"
         } dropdown z-20 mb-10`}
       >
